@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marksheet</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="marksheet-container" id="MarkSheet">
+        <center>
+            <h2>Student Marksheet</h2>
+            <table border="1">
+                <tr>
+                    <th>Subject</th>
+                    <th>Marks</th>
+                    <th>Total Marks</th>
+                </tr>
+                <tr>
+                    <td>Math</td>
+                    <td id="math"></td>
+                    <td>100</td>
+                </tr>
+                <tr>
+                    <td>Computer Science</td>
+                    <td id="computer"></td>
+                    <td>100</td>
+                </tr>
+                <tr>
+                    <td>Physics</td>
+                    <td id="physics"></td>
+                    <td>100</td>
+                </tr>
+                <tr>
+                    <td>Urdu</td>
+                    <td id="urdu"></td>
+                    <td>100</td>
+                </tr>
+                <tr>
+                    <td>English</td>
+                    <td id="english"></td>
+                    <td>100</td>
+                </tr>
+                <tr>
+                    <td>PST</td>
+                    <td id="pst"></td>
+                    <td>100</td>
+                </tr>
+                <tr>
+                    <td><b>Total</b></td>
+                    <td id="totalmarks"><b></b></td>
+                    <td><b>600</b></td>
+                </tr>
+            </table>
+        </center>
+
+        <div class="button-container">
+            <button onclick="PrintMarksheet()">Print Marksheet</button>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            let obtained_math = parseInt(prompt("Enter Your Math Marks"));
+            let obtained_computer = parseInt(prompt("Enter Your Computer Marks"));
+            let obtained_physics = parseInt(prompt("Enter Your Physics Marks"));
+            let obtained_urdu = parseInt(prompt("Enter Your Urdu Marks"));
+            let obtained_english = parseInt(prompt("Enter Your English Marks"));
+            let obtained_pst = parseInt(prompt("Enter Your PST Marks"));
+
+            // Assign values using innerHTML
+            document.getElementById("math").innerHTML = obtained_math;
+            document.getElementById("computer").innerHTML = obtained_computer;
+            document.getElementById("physics").innerHTML = obtained_physics;
+            document.getElementById("urdu").innerHTML = obtained_urdu;
+            document.getElementById("english").innerHTML = obtained_english;
+            document.getElementById("pst").innerHTML = obtained_pst;
+
+            // Calculate total marks
+            let total = obtained_math + obtained_computer + obtained_physics + obtained_urdu + obtained_english + obtained_pst;
+            document.getElementById("totalmarks").innerHTML = `<b>${total}</b>`;
+        };
+
+        function PrintMarksheet() {
+            let marksheet_data = document.getElementById("MarkSheet").innerHTML;
+            let show_data = window.open("", "", "height=500, width=500");
+            show_data.document.write("<h2>MARKSHEET</h2>");
+            show_data.document.write(
+                "<style>body {font-family: Arial, sans-serif; padding: 20px;} table { width: 100%; border-collapse: collapse; } th, td { padding: 10px; text-align: center; border: 1px solid black; } th {background-color: #4CAF50; color: white;} </style>"
+            );
+            show_data.document.write(marksheet_data);
+            show_data.document.close();
+            show_data.print();
+        }
+    </script>
+</body>
+</html>
